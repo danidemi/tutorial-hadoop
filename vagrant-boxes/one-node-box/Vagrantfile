@@ -14,5 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  v.gui = false
 	  v.name = "hadoop-single-node"
 	end
+	
+	config.vm.provision "shell", path: "provisioning.sh"
 
 end
