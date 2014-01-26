@@ -40,6 +40,9 @@ echo "Setting Up Environment Variables"
 echo "======================================"
 echo "export HADOOP_HOME=/opt/hadoop" >> /home/vagrant/.bashrc 
 echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.51/" >> /home/vagrant/.bashrc 
+echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> /home/vagrant/.bashrc 
+echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME/share/hadoop/hdfs' >> /home/vagrant/.bashrc 
+echo 'export HADOOP_YARN_HOME=$HADOOP_HOME/share/hadoop/yarn' >> /home/vagrant/.bashrc 
 echo 'export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin' >> /home/vagrant/.bashrc 
 
 echo "======================================"
