@@ -30,6 +30,9 @@ cd /opt
 wget http://it.apache.contactlab.it/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz
 tar xvf hadoop-2.2.0.tar.gz 
 ln -s hadoop-2.2.0 hadoop
+chown -R vagrant:vagrant hadoop-2.2.0
+chown vagrant:vagrant hadoop
+cd ~
 
 # Updates .bashrc
 echo "======================================"
