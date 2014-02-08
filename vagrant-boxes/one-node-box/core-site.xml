@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+
+  <!--
+  A base for other temporary directories.
+  default: /tmp/hadoop-${user.name}
+  -->
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/tmp</value>
+	</property>
+
+  <!--
+  The name of the default file system. 
+  A URI whose scheme and authority determine the FileSystem implementation. 
+
+  URI stands for "uniform resource identifier". It is a string of characters used to identify a name of a web resource.
+  The URI syntax consists of a URI scheme name (such as "http", "ftp", "mailto", "crid" or "file") followed by a colon character, 
+  and then by a scheme specific part.
+
+  For instance: http://en.wikipedia.org/wiki/URI#Examples_of_URI_references 
+  * "http" specifies the 'scheme' name, 
+  * "en.wikipedia.org" is the 'authority', 
+  * "/wiki/URI" the 'path' pointing to an article, 
+  * and "#Examples_of_URI_references" is a 'fragment' pointing to a section in the article.
+
+  The uri's scheme determines the config property (fs.SCHEME.impl) naming the FileSystem implementation class. 
+  The uri's authority is used to determine the host, port, etc. for a filesystem.
+
+  default: file:///	
+  -->
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://localhost:54310</value>
+	</property>
+
+</configuration>

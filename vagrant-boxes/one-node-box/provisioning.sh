@@ -1,9 +1,29 @@
 #!/bin/bash
 # Provisioning script for hadoop
-
 echo "======================================"
 echo "Running provisioning as user: `whoami`"
 echo "======================================"
+
+#Disabling IPv6
+#Given the fact that Apache Hadoop is not currently supported on IPv6 networks we will disable IPv6
+echo "======================================"
+echo "Disabling IPv6"
+echo "======================================"
+echo "# IPv6 configuration" >> /etc/sysctl.conf
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+sudo sysctl -p
+disabled=`cat /proc/sys/net/ipv6/conf/all/disable_ipv6`
+echo "Is IPv6 disabled (1=Yes, 0=No) ? ${disabled}"
+
+# Install some useful software
+# jdk - to run hadoop
+# telnet, lynx - to troubleshoot http issues from within the vagrant box
+echo "======================================"
+echo "Installing software"
+echo "======================================"
+yum install -y java-1.7.0-openjdk-devel lynx telnet
 
 # Makes vagrant user able to connect via ssh to the guest machine without issuing pwd
 echo "======================================"
@@ -16,15 +36,11 @@ cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
 logout
 cd ~
 
-# Install Java
-echo "======================================"
-echo "Installink Java"
-echo "======================================"
-yum install -y java-1.7.0-openjdk-devel
+
 
 # Download and set up Hadoop
 echo "======================================"
-echo "Installink Hadoop"
+echo "Installing Hadoop"
 echo "======================================"
 cd /opt
 wget http://it.apache.contactlab.it/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz
